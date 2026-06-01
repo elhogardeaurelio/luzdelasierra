@@ -3,771 +3,310 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Hogar de Aurelio · Luz de la Sierra · El Bosque, Cádiz</title>
+<title>El Hogar de Aurelio — Luz de la Sierra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2d4a2d;--green-light:#4a7c4a;--green-mid:#3a5e3a;
+  --sand:#f5f0e8;--bark:#8b6f47;--cream:#faf7f2;
+  --text:#1a2e1a;--muted:#6b7c6b;
+  --alta:#8b2a2a;--media:#7a6010;--baja:#2d4a2d
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);min-height:100vh}
 
-  :root {
-    --sierra: #3a5c3a;
-    --sierra-light: #5a7d4a;
-    --tierra: #8B5E3C;
-    --tierra-light: #c4956a;
-    --arena: #f5efe6;
-    --crema: #fdf8f2;
-    --piedra: #d4c4a8;
-    --humo: #ede8df;
-    --text-dark: #2a2318;
-    --text-mid: #5a4f3f;
-    --text-soft: #8a7d6a;
-    --gold: #c9a84c;
-  }
+/* HERO */
+.hero{position:relative;background:var(--green);padding:4rem 2rem 3rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;opacity:0.06;background-image:repeating-linear-gradient(60deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:24px 24px}
+.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#7aaa7a;margin-bottom:0.9rem;position:relative}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:400;color:#f0ede8;line-height:1.05;margin-bottom:0.3rem;position:relative}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:#a8c5a8;margin-bottom:2rem;letter-spacing:0.5px;position:relative}
+.badges{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.badge{background:rgba(255,255,255,0.09);border:0.5px solid rgba(255,255,255,0.18);border-radius:20px;padding:5px 14px;font-size:12px;color:#d0e8d0;display:flex;align-items:center;gap:6px}
 
-  html { scroll-behavior: smooth; }
+/* FOTOS */
+.photos-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:3px;background:#1a2e1a}
+.photo{overflow:hidden;position:relative;background:var(--green-mid)}
+.photo:first-child{grid-row:1/3}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.photo:hover img{transform:scale(1.04)}
+.photo-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(0,0,0,0.45));font-size:11px;color:rgba(255,255,255,0.85);letter-spacing:1px;text-transform:uppercase}
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--crema);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
+/* SECCIONES */
+.section{padding:2rem}
+.section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;font-weight:500}
+.desc-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--green);margin-bottom:0.75rem;line-height:1.2}
+.desc-text{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+.amenities{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.amenity{background:#fff;border:0.5px solid #d8e8d8;border-radius:10px;padding:12px;display:flex;align-items:center;gap:9px;font-size:13px;color:var(--text)}
+.amenity i{font-size:18px;color:var(--green-light)}
+.divider{height:0.5px;background:#d8e8d8;margin:0 2rem}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(253,248,242,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--piedra);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem; height: 64px;
-  }
-  .nav-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem; font-weight: 700;
-    color: var(--sierra); letter-spacing: 0.02em;
-  }
-  .nav-brand span { color: var(--tierra); font-style: italic; }
-  .nav-links { display: flex; gap: 2rem; }
-  .nav-links a {
-    text-decoration: none; color: var(--text-mid);
-    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-    font-weight: 400; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--sierra); }
-  .nav-cta {
-    background: var(--sierra); color: #fff;
-    padding: 0.55rem 1.4rem; border-radius: 2px;
-    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
-    text-decoration: none; font-weight: 500; transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--sierra-light); }
+/* CALENDARIO */
+.cal-wrap{padding:2rem}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.cal-month-label{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green)}
+.cal-nav{display:flex;gap:4px}
+.cal-btn{background:none;border:0.5px solid #d8e8d8;border-radius:8px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--green-light);font-size:16px}
+.cal-btn:hover{background:#f0f8f0}
+.cal-dh{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:6px}
+.cal-dh span{font-size:11px;color:var(--muted);font-weight:500;padding:4px 0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.day{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;border:0.5px solid transparent;transition:all .12s}
+.day:not(.empty):hover{filter:brightness(0.93);cursor:pointer}
+.day.empty{cursor:default}
+.day.alta{background:#f5e8e8;color:#6b1a1a;border-color:#e8c8c8}
+.day.media{background:#faf4e0;color:#5a4510;border-color:#e8d888}
+.day.baja{background:#e8f4e8;color:#1a3a1a;border-color:#c0d8c0}
+.day.today{border-width:1.5px !important;border-color:var(--green) !important;font-weight:600}
+.day.booked{background:#4a7c4a !important;color:#fff !important;border-color:#3a6a3a !important;cursor:not-allowed}
+.legend{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.legend-dot{width:13px;height:13px;border-radius:3px;flex-shrink:0}
+.season-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-top:16px}
+.season-card{border-radius:12px;padding:12px 14px}
+.season-card.alta{background:#f5e8e8;border:0.5px solid #e8c8c8}
+.season-card.media{background:#faf4e0;border:0.5px solid #e8d888}
+.season-card.baja{background:#e8f4e8;border:0.5px solid #c0d8c0}
+.season-title{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:2px;margin-bottom:5px}
+.season-card.alta .season-title{color:#8b2a2a}
+.season-card.media .season-title{color:#7a6010}
+.season-card.baja .season-title{color:#2d4a2d}
+.season-dates{font-size:12px;line-height:1.75}
+.season-card.alta .season-dates{color:#6b1a1a}
+.season-card.media .season-dates{color:#5a4510}
+.season-card.baja .season-dates{color:#1a3a1a}
 
-  /* ── HERO ── */
-  .hero {
-    height: 100vh; min-height: 640px;
-    position: relative; display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(160deg, #2a3d2a 0%, #3a5c3a 40%, #5a4a2a 100%);
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      radial-gradient(ellipse 60% 80% at 20% 50%, rgba(90,125,74,0.35) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 60% at 80% 30%, rgba(139,94,60,0.2) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 50% 100%, rgba(42,61,42,0.8) 0%, transparent 70%);
-  }
-  .hero-texture {
-    position: absolute; inset: 0; z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='rgba(255,255,255,0.04)'/%3E%3Ccircle cx='10' cy='10' r='0.5' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='50' cy='50' r='0.5' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
-  }
-  .hero-content {
-    position: relative; z-index: 3; text-align: center;
-    padding: 0 1.5rem;
-    animation: fadeUp 1.2s ease both;
-  }
-  .hero-badge {
-    display: inline-block;
-    border: 1px solid rgba(201,168,76,0.6);
-    color: var(--gold); font-size: 0.72rem;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 0.4rem 1.2rem; margin-bottom: 1.8rem;
-    font-family: 'Jost', sans-serif; font-weight: 400;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    color: #fff; line-height: 1.05;
-    font-weight: 400; margin-bottom: 0.4rem;
-  }
-  .hero h1 em { color: var(--gold); font-style: italic; }
-  .hero-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    color: rgba(255,255,255,0.75); font-style: italic;
-    margin-bottom: 0.8rem; font-weight: 300;
-  }
-  .hero-tagline {
-    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,0.45); margin-bottom: 3rem; font-weight: 300;
-  }
-  .hero-dots { color: var(--gold); margin: 0 0.5rem; }
-  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--gold); color: var(--text-dark);
-    padding: 0.9rem 2.4rem; border-radius: 2px;
-    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; font-weight: 500; transition: all 0.2s;
-  }
-  .btn-primary:hover { background: #e0bc5c; transform: translateY(-1px); }
-  .btn-outline {
-    border: 1px solid rgba(255,255,255,0.4); color: #fff;
-    padding: 0.9rem 2.4rem; border-radius: 2px;
-    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; font-weight: 300; transition: all 0.2s;
-  }
-  .btn-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.07); }
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-    z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    animation: bounce 2s infinite;
-  }
-  .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-  .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.8), transparent); }
+/* NORMAS */
+.rules-section{padding:2rem;background:#fff}
+.rules{display:flex;flex-wrap:wrap;gap:8px;margin-top:0.5rem}
+.rule{background:var(--sand);border-radius:8px;padding:7px 14px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.rule i{font-size:14px;color:var(--bark)}
 
-  /* ── SECTION COMMONS ── */
-  section { padding: 7rem 2rem; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .section-eyebrow {
-    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--tierra); font-weight: 500; margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .section-eyebrow::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--tierra); }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--text-dark); font-weight: 400; line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-  .section-title em { color: var(--sierra); font-style: italic; }
-  .section-body {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem; color: var(--text-mid);
-    line-height: 1.85; font-weight: 300; max-width: 560px;
-  }
+/* RESEÑAS */
+.reviews{padding:2rem}
+.review-card{background:#fff;border:0.5px solid #d8e8d8;border-radius:12px;padding:1rem;margin-bottom:10px}
+.review-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.review-name{font-size:13px;font-weight:500;color:var(--green)}
+.stars{color:#c8a84a;font-size:14px;letter-spacing:1px}
+.review-text{font-size:13px;color:var(--muted);line-height:1.8;font-style:italic}
 
-  /* ── INTRO STRIP ── */
-  .intro-strip {
-    background: var(--sierra);
-    padding: 3rem 2rem;
-    display: flex; justify-content: center;
-  }
-  .intro-strip-inner {
-    max-width: 900px; width: 100%;
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
-  }
-  .intro-card {
-    background: rgba(255,255,255,0.07);
-    padding: 2rem 1.5rem; text-align: center;
-  }
-  .intro-card-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem; color: var(--gold); font-weight: 400; line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-  .intro-card-label {
-    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0.6); font-weight: 300;
-  }
+/* CONTACTO */
+.contact-section{padding:2.5rem 2rem;background:var(--green)}
+.contact-section .section-label{color:#7aaa7a}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:#f0ede8;margin-bottom:0.4rem;line-height:1.1}
+.contact-title em{font-style:italic;color:#c8ddc8}
+.contact-sub{font-size:13px;color:#a8c5a8;margin-bottom:1.8rem}
+.contact-btns{display:flex;flex-wrap:wrap;gap:10px}
+.contact-btn{background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.22);border-radius:10px;padding:11px 20px;font-size:13px;color:#f0ede8;cursor:pointer;display:flex;align-items:center;gap:9px;font-family:'DM Sans',sans-serif;text-decoration:none;transition:background .15s}
+.contact-btn:hover{background:rgba(255,255,255,0.2)}
+.contact-btn i{font-size:18px}
 
-  /* ── ABOUT ── */
-  .about { background: var(--crema); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .about-img-wrap { position: relative; }
-  .about-img-main {
-    width: 100%; aspect-ratio: 4/5; object-fit: cover;
-    border-radius: 2px;
-  }
-  .about-img-accent {
-    position: absolute; bottom: -2rem; right: -2rem;
-    width: 55%; aspect-ratio: 1/1; object-fit: cover;
-    border-radius: 2px; border: 6px solid var(--crema);
-  }
-  .about-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; color: var(--sierra);
-    font-style: italic; line-height: 1.4; font-weight: 300;
-    border-left: 3px solid var(--gold);
-    padding-left: 1.5rem; margin: 2.5rem 0;
-  }
-  .about-amenities {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 2rem;
-  }
-  .amenity-item {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-size: 0.85rem; color: var(--text-mid); font-weight: 300;
-  }
-  .amenity-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gold); flex-shrink: 0;
-  }
-
-  /* ── GALLERY ── */
-  .gallery { background: var(--arena); padding: 7rem 2rem; }
-  .gallery-header { text-align: center; margin-bottom: 4rem; }
-  .gallery-header .section-eyebrow { justify-content: center; }
-  .gallery-header .section-eyebrow::after { display: none; }
-  .gallery-header .section-eyebrow::before { content: ''; flex: 0 0 40px; height: 1px; background: var(--tierra); }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 300px 300px;
-    gap: 8px; max-width: 1100px; margin: 0 auto;
-  }
-  .gallery-item { overflow: hidden; cursor: zoom-in; position: relative; }
-  .gallery-item img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-  }
-  .gallery-item:hover img { transform: scale(1.05); }
-  .gallery-item.span2 { grid-column: span 2; }
-  .gallery-item.tall { grid-row: span 2; }
-  .gallery-overlay {
-    position: absolute; inset: 0;
-    background: rgba(42,35,24,0); transition: background 0.3s;
-    display: flex; align-items: flex-end; padding: 1.2rem;
-  }
-  .gallery-item:hover .gallery-overlay { background: rgba(42,35,24,0.25); }
-  .gallery-label {
-    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0); font-weight: 400; transition: color 0.3s;
-  }
-  .gallery-item:hover .gallery-label { color: rgba(255,255,255,0.9); }
-
-  /* ── FEATURES ── */
-  .features { background: var(--crema); }
-  .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; margin-top: 4rem; }
-  .feature-card {
-    padding: 2.5rem 2rem;
-    border-top: 2px solid var(--piedra);
-    transition: border-color 0.3s;
-  }
-  .feature-card:hover { border-color: var(--sierra); }
-  .feature-icon {
-    width: 48px; height: 48px; margin-bottom: 1.5rem;
-    color: var(--sierra);
-  }
-  .feature-icon svg { width: 100%; height: 100%; }
-  .feature-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; font-weight: 400;
-    color: var(--text-dark); margin-bottom: 0.8rem;
-  }
-  .feature-desc {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem; color: var(--text-soft);
-    line-height: 1.75; font-weight: 300;
-  }
-
-  /* ── LOCATION ── */
-  .location { background: var(--humo); }
-  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .location-list { list-style: none; margin-top: 2rem; }
-  .location-list li {
-    display: flex; align-items: baseline; gap: 1rem;
-    padding: 1rem 0; border-bottom: 1px solid var(--piedra);
-    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
-    color: var(--text-mid); font-weight: 300;
-  }
-  .location-list li:last-child { border-bottom: none; }
-  .loc-name { flex: 1; }
-  .loc-dist { color: var(--tierra); font-weight: 400; }
-  .location-map-placeholder {
-    background: var(--sierra);
-    aspect-ratio: 4/3; border-radius: 2px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 1rem;
-    position: relative; overflow: hidden;
-  }
-  .map-svg { opacity: 0.25; position: absolute; inset: 0; }
-  .map-pin {
-    position: relative; z-index: 2; text-align: center;
-  }
-  .map-pin-icon {
-    width: 40px; height: 40px; background: var(--gold);
-    border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-    margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;
-  }
-  .map-pin-icon::after {
-    content: ''; width: 16px; height: 16px; background: var(--sierra);
-    border-radius: 50%; transform: rotate(45deg);
-  }
-  .map-pin p { color: #fff; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .map-pin strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); font-weight: 400; margin-bottom: 0.3rem; }
-  .map-link {
-    position: relative; z-index: 2;
-    background: var(--gold); color: var(--text-dark);
-    padding: 0.7rem 1.8rem; border-radius: 2px;
-    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; font-weight: 500; transition: background 0.2s;
-  }
-  .map-link:hover { background: #e0bc5c; }
-
-  /* ── ACTIVITIES ── */
-  .activities { background: var(--crema); }
-  .activities-pills { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.5rem; }
-  .pill {
-    border: 1px solid var(--piedra); color: var(--text-mid);
-    padding: 0.6rem 1.4rem; border-radius: 100px;
-    font-size: 0.82rem; font-weight: 300;
-    transition: all 0.2s; cursor: default;
-  }
-  .pill:hover { border-color: var(--sierra); color: var(--sierra); background: rgba(58,92,58,0.05); }
-  .pill.highlight { background: var(--sierra); color: #fff; border-color: var(--sierra); }
-  .activities-img-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 3rem; }
-  .act-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 2px; }
-
-  /* ── CONTACT ── */
-  .contact { background: var(--sierra); }
-  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact .section-eyebrow { color: var(--gold); }
-  .contact .section-eyebrow::after { background: var(--gold); }
-  .contact .section-title { color: #fff; }
-  .contact .section-body { color: rgba(255,255,255,0.7); }
-  .contact-channels { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
-  .contact-channel {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1.2rem 1.5rem;
-    background: rgba(255,255,255,0.07);
-    border-left: 3px solid var(--gold);
-    text-decoration: none; color: #fff; transition: background 0.2s;
-  }
-  .contact-channel:hover { background: rgba(255,255,255,0.13); }
-  .ch-icon { font-size: 1.2rem; }
-  .ch-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
-  .ch-value { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; }
-  .contact-form { background: rgba(255,255,255,0.08); padding: 2.5rem; }
-  .form-group { margin-bottom: 1.2rem; }
-  .form-group label {
-    display: block; font-size: 0.7rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: rgba(255,255,255,0.55);
-    margin-bottom: 0.4rem;
-  }
-  .form-group input, .form-group textarea, .form-group select {
-    width: 100%; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2); color: #fff;
-    padding: 0.8rem 1rem; font-family: 'Jost', sans-serif;
-    font-size: 0.9rem; font-weight: 300; outline: none;
-    transition: border-color 0.2s; border-radius: 0;
-    -webkit-appearance: none;
-  }
-  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-    border-color: var(--gold);
-  }
-  .form-group select option { background: var(--sierra); }
-  .form-group textarea { resize: vertical; min-height: 100px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .btn-send {
-    width: 100%; background: var(--gold); color: var(--text-dark);
-    border: none; padding: 1rem; cursor: pointer;
-    font-family: 'Jost', sans-serif; font-size: 0.82rem;
-    letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
-    transition: background 0.2s; margin-top: 0.5rem;
-  }
-  .btn-send:hover { background: #e0bc5c; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--text-dark); padding: 3rem 2rem;
-    text-align: center;
-  }
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; color: #fff; font-weight: 400; margin-bottom: 0.4rem;
-  }
-  .footer-logo em { color: var(--gold); font-style: italic; }
-  .footer-sub { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 2rem; }
-  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
-  }
-  .lightbox.active { display: flex; }
-  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
-  .lightbox-close {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; opacity: 0.7;
-  }
-  .lightbox-close:hover { opacity: 1; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
-
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 0 1.2rem; }
-    .nav-links { display: none; }
-    .about-grid, .location-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .about-img-accent { display: none; }
-    .features-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item.span2 { grid-column: span 2; }
-    .gallery-item.tall { grid-row: span 1; }
-    .intro-strip-inner { grid-template-columns: 1fr; }
-    .activities-img-row { grid-template-columns: 1fr 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-  }
+/* FOOTER */
+footer{background:#1a2e1a;padding:1.2rem 2rem;text-align:center;font-size:12px;color:#5a7a5a}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">El Hogar de <span>Aurelio</span></div>
-  <div class="nav-links">
-    <a href="#about">El Alojamiento</a>
-    <a href="#galeria">Galería</a>
-    <a href="#ubicacion">Ubicación</a>
-    <a href="#actividades">Rutas</a>
-    <a href="#contacto">Reservas</a>
-  </div>
-  <a href="#contacto" class="nav-cta">Reservar</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="inicio">
+<header class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-texture"></div>
-  <div class="hero-content">
-    <div class="hero-badge">El Bosque · Sierra de Grazalema · Cádiz</div>
-    <h1>El Hogar de<br><em>Aurelio</em></h1>
-    <p class="hero-sub">Luz de la Sierra</p>
-    <p class="hero-tagline">Aire Puro <span class="hero-dots">·</span> Senderismo <span class="hero-dots">·</span> Rutas</p>
-    <div class="hero-btns">
-      <a href="#contacto" class="btn-primary">Consultar disponibilidad</a>
-      <a href="#galeria" class="btn-outline">Ver el apartamento</a>
-    </div>
+  <p class="hero-tag">Alquiler vacacional · Bosque de Cádiz</p>
+  <h1 class="hero-name">El Hogar de Aurelio</h1>
+  <p class="hero-subtitle">Luz de la Sierra</p>
+  <div class="badges">
+    <span class="badge"><i class="ti ti-trees"></i>Bosque natural</span>
+    <span class="badge"><i class="ti ti-home-2"></i>2 habitaciones</span>
+    <span class="badge"><i class="ti ti-map-pin"></i>Cádiz, Andalucía</span>
+    <span class="badge"><i class="ti ti-wifi"></i>Wi-Fi</span>
   </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    <span>Explorar</span>
-  </div>
-</section>
+</header>
 
-<!-- INTRO STRIP -->
-<div class="intro-strip">
-  <div class="intro-strip-inner">
-    <div class="intro-card">
-      <div class="intro-card-num">3</div>
-      <div class="intro-card-label">Habitaciones</div>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-num">1</div>
-      <div class="intro-card-label">Baño completo</div>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-num">6</div>
-      <div class="intro-card-label">Huéspedes máx.</div>
-    </div>
+<div class="photos-grid">
+  <div class="photo">
+    <img src="foto 1.jpg" alt="El Hogar de Aurelio - Vista principal">
+    <div class="photo-label">Vista principal</div>
+  </div>
+  <div class="photo">
+    <img src="foto 2.jpg" alt="Salón">
+    <div class="photo-label">Salón</div>
+  </div>
+  <div class="photo">
+    <img src="foto 3.jpg" alt="Cocina">
+    <div class="photo-label">Cocina</div>
+  </div>
+  <div class="photo">
+    <img src="foto 4.jpg" alt="Habitación 1">
+    <div class="photo-label">Habitación 1</div>
+  </div>
+  <div class="photo">
+    <img src="foto 5.jpg" alt="Habitación 2">
+    <div class="photo-label">Habitación 2</div>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-img-wrap reveal">
-        <img class="about-img-main" src="IMG_1346.jpeg" alt="Salón comedor con cocina integrada" onerror="this.style.background='#d4c4a8';this.alt=''">
-        <img class="about-img-accent" src="IMG_1349.jpeg" alt="Dormitorio con balcón" onerror="this.style.display='none'">
-      </div>
-      <div class="reveal" style="animation-delay:0.2s">
-        <div class="section-eyebrow">El alojamiento</div>
-        <h2 class="section-title">Un rincón de <em>sierra</em> que se siente tuyo</h2>
-        <blockquote class="about-quote">"Despertar al sonido del río, el aire fresco de la sierra y el silencio que solo existe en el Parque Natural de Grazalema."</blockquote>
-        <p class="section-body">Apartamento acogedor en el corazón de El Bosque, pueblo blanco de Cádiz. Totalmente equipado, con cocina, salón con sofá, baño completo con bañera y tres habitaciones con balcones al exterior. Perfecto para senderistas, familias y amantes de la naturaleza.</p>
-        <div class="about-amenities">
-          <div class="amenity-item"><span class="amenity-dot"></span>Cocina equipada con microondas</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>Cafetera Nespresso</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>Televisión pantalla plana</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>Baño con bañera y bidé</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>2 habitaciones con camas de matrimonio</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>Balcones con vistas</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>Ropa de cama incluida</div>
-          <div class="amenity-item"><span class="amenity-dot"></span>Frigorífico, batidora, todos los elementos necesarios para cocina</div>
-        </div>
-      </div>
+<section class="section">
+  <p class="section-label">El espacio</p>
+  <h2 class="desc-title">Un refugio entre<br>pinos y silencio</h2>
+  <p class="desc-text">Apartamento con 2 habitaciones con cama de matrimonio, rodeado de naturaleza en los bosques de Cádiz. Un lugar para desconectar, respirar aire limpio y disfrutar de la calma de la sierra gaditana. A pocos minutos del mar y de los pueblos blancos.</p>
+  <div class="amenities">
+    <div class="amenity"><i class="ti ti-bed-filled"></i><span>2 hab. matrimonio</span></div>
+    <div class="amenity"><i class="ti ti-users"></i><span>Hasta 4 personas</span></div>
+    <div class="amenity"><i class="ti ti-wifi"></i><span>Wi-Fi</span></div>
+    <div class="amenity"><i class="ti ti-air-conditioning"></i><span>Aire acond.</span></div>
+    <div class="amenity"><i class="ti ti-car"></i><span>Parking</span></div>
+    <div class="amenity"><i class="ti ti-trees"></i><span>Jardín / bosque</span></div>
+    <div class="amenity"><i class="ti ti-tool-kitchen-2"></i><span>Cocina equipada</span></div>
+    <div class="amenity"><i class="ti ti-shirt"></i><span>Lavadora</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cal-wrap">
+  <p class="section-label">Disponibilidad y temporadas</p>
+  <div class="cal-header">
+    <h3 class="cal-month-label" id="calTitle">Junio 2026</h3>
+    <div class="cal-nav">
+      <button class="cal-btn" onclick="changeMonth(-1)" aria-label="Mes anterior">&#8249;</button>
+      <button class="cal-btn" onclick="changeMonth(1)" aria-label="Mes siguiente">&#8250;</button>
+    </div>
+  </div>
+  <div class="cal-dh">
+    <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#f5e8e8;border:0.5px solid #e8c8c8"></div><span>Temporada alta</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#faf4e0;border:0.5px solid #e8d888"></div><span>Temporada media</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e8f4e8;border:0.5px solid #c0d8c0"></div><span>Temporada baja</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4a7c4a"></div><span>Reservado</span></div>
+  </div>
+  <div class="season-cards">
+    <div class="season-card alta">
+      <p class="season-title">Temporada alta</p>
+      <p class="season-dates">Carnaval (12–22 feb) · Semana Santa (30 mar–5 abr) · Julio · Agosto · Navidad (24 dic–6 ene)</p>
+    </div>
+    <div class="season-card media">
+      <p class="season-title">Temporada media</p>
+      <p class="season-dates">Mayo · Junio · Septiembre · Octubre · Diciembre · Puentes nacionales y autonómicos</p>
+    </div>
+    <div class="season-card baja">
+      <p class="season-title">Temporada baja</p>
+      <p class="season-dates">Enero · Febrero (sin carnaval) · Marzo · Noviembre</p>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="galeria">
-  <div class="gallery-header reveal">
-    <div class="section-eyebrow">El espacio</div>
-    <h2 class="section-title">Galería</h2>
-  </div>
-  <div class="gallery-grid reveal">
-    <div class="gallery-item tall" onclick="openLight('IMG_1346.jpeg')">
-      <img src="IMG_1346.jpeg" alt="Salón principal" onerror="this.parentElement.style.background='#8B5E3C'">
-      <div class="gallery-overlay"><span class="gallery-label">Salón · Cocina</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLight('IMG_1347.jpeg')">
-      <img src="IMG_1347.jpeg" alt="Cocina" onerror="this.parentElement.style.background='#5a7d4a'">
-      <div class="gallery-overlay"><span class="gallery-label">Cocina</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLight('IMG_1348.jpeg')">
-      <img src="IMG_1348.jpeg" alt="Baño" onerror="this.parentElement.style.background='#3a5c3a'">
-      <div class="gallery-overlay"><span class="gallery-label">Baño</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLight('IMG_1349.jpeg')">
-      <img src="IMG_1349.jpeg" alt="Dormitorio doble" onerror="this.parentElement.style.background='#8a7d6a'">
-      <div class="gallery-overlay"><span class="gallery-label">Dormitorio con balcón</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLight('IMG_1354.jpeg')">
-      <img src="IMG_1354.jpeg" alt="Habitación principal" onerror="this.parentElement.style.background='#8B5E3C'">
-      <div class="gallery-overlay"><span class="gallery-label">Habitación principal</span></div>
-    </div>
+<div class="divider"></div>
+
+<section class="rules-section">
+  <p class="section-label">Normas de la casa</p>
+  <div class="rules">
+    <span class="rule"><i class="ti ti-clock"></i>Check-in 16h · Check-out 11h</span>
+    <span class="rule"><i class="ti ti-paw"></i>Mascotas permitidas</span>
+    <span class="rule"><i class="ti ti-flame-off"></i>No fumar en interior</span>
+    <span class="rule"><i class="ti ti-users"></i>Máx. 4 personas</span>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features" id="servicios">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-eyebrow">Por qué elegirnos</div>
-      <h2 class="section-title">Lo que hace especial este <em>lugar</em></h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
-            <path d="M24 4v6M24 38v6M4 24h6M38 24h6"/>
-            <circle cx="24" cy="24" r="8"/>
-            <path d="M17 17l3 3M28 28l3 3M28 17l3-3M17 28l-3 3"/>
-          </svg>
-        </div>
-        <h3 class="feature-title">Naturaleza sin igual</h3>
-        <p class="feature-desc">Enclavado en el Parque Natural Sierra de Grazalema, Reserva de la Biosfera. Ríos, barrancos y paisajes que quitan el aliento a pocos minutos a pie.</p>
-      </div>
-      <div class="feature-card reveal" style="animation-delay:0.15s">
-        <div class="feature-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 32c0-6 4-10 8-14l8-14 8 14c4 4 8 8 8 14a16 16 0 01-32 0z"/>
-            <path d="M24 16v16M18 28h12"/>
-          </svg>
-        </div>
-        <h3 class="feature-title">Pueblo blanco auténtico</h3>
-        <p class="feature-desc">El Bosque conserva toda la esencia de los pueblos blancos gaditanos. Calles empedradas, fuentes, mesones y una hospitalidad que solo existe en Andalucía profunda.</p>
-      </div>
-      <div class="feature-card reveal" style="animation-delay:0.3s">
-        <div class="feature-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6" y="14" width="36" height="26" rx="2"/>
-            <path d="M16 14V10a2 2 0 014 0v4M28 14V10a2 2 0 014 0v4M6 22h36"/>
-          </svg>
-        </div>
-        <h3 class="feature-title">Tienes incluido café e infusiones</h3>
-        <p class="feature-desc">Ropa de cama, cocina completamente equipada, calefacción, WiFi y todo lo necesario para que tu única preocupación sea disfrutar del camino.</p>
-      </div>
-    </div>
+<div class="divider"></div>
+
+<section class="reviews">
+  <p class="section-label">Opiniones</p>
+  <div class="review-card">
+    <div class="review-header"><span class="review-name">María G.</span><span class="stars">★★★★★</span></div>
+    <p class="review-text">"Un lugar increíble para desconectar. El bosque, el silencio... volvemos seguro."</p>
+  </div>
+  <div class="review-card">
+    <div class="review-header"><span class="review-name">Carlos M.</span><span class="stars">★★★★★</span></div>
+    <p class="review-text">"Apartamento muy bien equipado y con un entorno natural único en toda la provincia."</p>
   </div>
 </section>
 
-<!-- LOCATION -->
-<section class="location" id="ubicacion">
-  <div class="container">
-    <div class="location-grid">
-      <div class="reveal">
-        <div class="section-eyebrow">Ubicación</div>
-        <h2 class="section-title">En el corazón de <em>Grazalema</em></h2>
-        <p class="section-body">El Bosque, Cádiz. Puerta de entrada al Parque Natural de la Sierra de Grazalema, declarado Reserva de la Biosfera por la UNESCO.</p>
-        <ul class="location-list">
-          <li><span class="loc-name">El Bosque (pueblo)</span><span class="loc-dist">A pie</span></li>
-          <li><span class="loc-name">Río El Bosque</span><span class="loc-dist">5 min</span></li>
-          <li><span class="loc-name">Grazalema</span><span class="loc-dist">20 min</span></li>
-          <li><span class="loc-name">Zahara de la Sierra</span><span class="loc-dist">25 min</span></li>
-          <li><span class="loc-name">Ronda</span><span class="loc-dist">40 min</span></li>
-          <li><span class="loc-name">Jerez de la Frontera</span><span class="loc-dist">50 min</span></li>
-          <li><span class="loc-name">Sevilla / Málaga</span><span class="loc-dist">1h 20 min</span></li>
-        </ul>
-      </div>
-      <div class="reveal" style="animation-delay:0.2s">
-        <div class="location-map-placeholder">
-          <svg class="map-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 200 Q100 150 150 180 Q200 210 250 170 Q300 130 350 160" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-            <path d="M80 100 Q130 80 180 110 Q230 140 280 100 Q330 60 370 90" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-            <circle cx="200" cy="150" r="30" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-            <circle cx="200" cy="150" r="60" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          </svg>
-          <div class="map-pin">
-            <div class="map-pin-icon"></div>
-            <strong>El Bosque</strong>
-            <p>Sierra de Grazalema, Cádiz</p>
-          </div>
-          <a href="https://maps.google.com/?q=El+Bosque+Cadiz" class="map-link" target="_blank">Abrir en Google Maps</a>
-        </div>
-      </div>
-    </div>
+<section class="contact-section">
+  <p class="section-label">Reservas y contacto</p>
+  <h2 class="contact-title">¿Nos vemos<br><em>en la sierra?</em></h2>
+  <p class="contact-sub">Escríbenos para consultar disponibilidad o hacer tu reserva</p>
+  <div class="contact-btns">
+    <a href="tel:+34600000000" class="contact-btn"><i class="ti ti-phone"></i>Teléfono</a>
+    <a href="https://wa.me/34600000000" class="contact-btn"><i class="ti ti-brand-whatsapp"></i>WhatsApp</a>
+    <a href="https://x.com/" class="contact-btn"><i class="ti ti-brand-x"></i>Twitter / X</a>
+    <a href="https://tiktok.com/" class="contact-btn"><i class="ti ti-brand-tiktok"></i>TikTok</a>
+    <a href="https://facebook.com/" class="contact-btn"><i class="ti ti-brand-facebook"></i>Facebook</a>
   </div>
 </section>
 
-<!-- ACTIVITIES -->
-<section class="activities" id="actividades">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-eyebrow">Rutas y actividades</div>
-      <h2 class="section-title">La sierra te <em>espera</em></h2>
-      <p class="section-body">El Bosque es el punto de partida de algunas de las rutas de senderismo más espectaculares de Andalucía. Cada camino, un mundo diferente.</p>
-    </div>
-    <div class="activities-pills reveal">
-      <span class="pill highlight">Senderismo</span>
-      <span class="pill">Ruta del Río Majaceite</span>
-      <span class="pill">Pinsapar de Grazalema</span>
-      <span class="pill">Garganta Verde</span>
-      <span class="pill">Birdwatching</span>
-      <span class="pill">Fotografía de naturaleza</span>
-      <span class="pill">Escalada</span>
-      <span class="pill">Visitas pueblos blancos</span>
-      <span class="pill">Gastronomía andaluza</span>
-      <span class="pill">Espeleología</span>
-      <span class="pill">Queso payoyo</span>
-      <span class="pill">Kayak y piragüismo</span>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contacto">
-  <div class="container">
-    <div class="contact-inner">
-      <div class="reveal">
-        <div class="section-eyebrow">Reservas y contacto</div>
-        <h2 class="section-title" style="color:#fff">¿Cuándo <em style="color:var(--gold)">vienes</em>?</h2>
-        <p class="section-body">Escríbenos para consultar disponibilidad o con cualquier pregunta. Respondemos siempre en pocas horas.</p>
-        <div class="contact-channels">
-          <a href="mailto:elhogardeaurelio@gmail.com" class="contact-channel">
-            <span class="ch-icon">✉</span>
-            <div>
-              <span class="ch-label">Email</span>
-              <span class="ch-value">elhogardeaurelio@gmail.com</span>
-            </div>
-          </a>
-          <a href="https://www.facebook.com/elhogaraurelio" target="_blank" class="contact-channel">
-            <span class="ch-icon">f</span>
-            <div>
-              <span class="ch-label">Facebook</span>
-              <span class="ch-value">@elhogaraurelio</span>
-            </div>
-          </a>
-          <a href="https://x.com/elhogaraurelio" target="_blank" class="contact-channel">
-            <span class="ch-icon">𝕏</span>
-            <div>
-              <span class="ch-label">X / Twitter</span>
-              <span class="ch-value">@elhogaraurelio</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="contact-form reveal" style="animation-delay:0.2s">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" placeholder="Tu nombre">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="tu@email.com">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Llegada</label>
-            <input type="date">
-          </div>
-          <div class="form-group">
-            <label>Salida</label>
-            <input type="date">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Número de personas</label>
-          <select>
-            <option>1 persona</option>
-            <option>2 personas</option>
-            <option>3 personas</option>
-            <option>4 personas</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Mensaje (opcional)</label>
-          <textarea placeholder="Cuéntanos algo sobre tu visita…"></textarea>
-        </div>
-        <button class="btn-send" onclick="sendMail()">Enviar consulta</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">El Hogar de <em>Aurelio</em></div>
-  <div class="footer-sub">Luz de la Sierra · El Bosque, Cádiz</div>
-  <div class="footer-links">
-    <a href="#about">El alojamiento</a>
-    <a href="#galeria">Galería</a>
-    <a href="#ubicacion">Cómo llegar</a>
-    <a href="https://www.facebook.com/elhogaraurelio" target="_blank">Facebook</a>
-    <a href="https://x.com/elhogaraurelio" target="_blank">X / Twitter</a>
-    <a href="mailto:elhogardeaurelio@gmail.com">Email</a>
-  </div>
-  <div class="footer-copy">© 2025 El Hogar de Aurelio · Aire Puro · Senderismo · Rutas</div>
+  © 2026 El Hogar de Aurelio — Luz de la Sierra · Bosque de Cádiz, Andalucía
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLight()">
-  <span class="lightbox-close" onclick="closeLight()">×</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
 <script>
-function openLight(src){
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closeLight(){
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLight(); });
+const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.1});
-revealEls.forEach(el=>obs.observe(el));
-
-function sendMail(){
-  const name = document.querySelector('input[placeholder="Tu nombre"]').value;
-  const email = document.querySelector('input[placeholder="tu@email.com"]').value;
-  const msg = document.querySelector('textarea').value;
-  if(!name || !email){ alert('Por favor rellena al menos tu nombre y email.'); return; }
-  const body = encodeURIComponent(`Hola, me llamo ${name} y me gustaría consultar disponibilidad.\n\n${msg}`);
-  window.location.href = `mailto:elhogardeaurelio@gmail.com?subject=Consulta de reserva - El Hogar de Aurelio&body=${body}`;
+function getSeason(y,m,d){
+  const dt=new Date(y,m,d);
+  const ranges_alta=[
+    [new Date(y,1,12),new Date(y,1,22)],
+    [new Date(y,2,30),new Date(y,3,5)],
+    [new Date(y,6,1),new Date(y,6,31)],
+    [new Date(y,7,1),new Date(y,7,31)],
+    [new Date(y,11,24),new Date(y+1,0,6)],
+    [new Date(y-1,11,24),new Date(y,0,6)]
+  ];
+  const ranges_media=[
+    [new Date(y,4,1),new Date(y,5,30)],
+    [new Date(y,8,1),new Date(y,9,31)],
+    [new Date(y,11,1),new Date(y,11,23)]
+  ];
+  // Puentes nacionales/autonómicos
+  const puentes=[[1,1],[1,6],[2,28],[5,1],[8,15],[10,12],[12,6],[12,8]];
+  for(const [s,e] of ranges_alta){if(dt>=s&&dt<=e)return'alta';}
+  for(const [pm,pd] of puentes){if(m+1===pm&&d===pd)return'media';}
+  for(const [s,e] of ranges_media){if(dt>=s&&dt<=e)return'media';}
+  const dow=dt.getDay();
+  if((dow===6||dow===0)&&(m>=4&&m<=9))return'media';
+  return'baja';
 }
+
+// Añade aquí las fechas reservadas: formato {mes(0-11):[días]}
+const booked={};
+
+let cur=new Date(2026,5,1);
+
+function renderCal(){
+  const m=cur.getMonth(),y=cur.getFullYear();
+  document.getElementById('calTitle').textContent=MONTHS[m]+' '+y;
+  const grid=document.getElementById('calGrid');
+  grid.innerHTML='';
+  const first=new Date(y,m,1).getDay();
+  const offset=first===0?6:first-1;
+  const days=new Date(y,m+1,0).getDate();
+  const today=new Date();
+  const bk=booked[m]||[];
+  for(let i=0;i<offset;i++){const el=document.createElement('div');el.className='day empty';grid.appendChild(el);}
+  for(let d=1;d<=days;d++){
+    const el=document.createElement('div');
+    el.textContent=d;
+    if(bk.includes(d)){
+      el.className='day booked';
+    } else {
+      const s=getSeason(y,m,d);
+      el.className='day '+s;
+    }
+    if(y===today.getFullYear()&&m===today.getMonth()&&d===today.getDate())el.classList.add('today');
+    grid.appendChild(el);
+  }
+}
+
+function changeMonth(dir){
+  cur.setMonth(cur.getMonth()+dir);
+  renderCal();
+}
+
+renderCal();
 </script>
 </body>
 </html>
